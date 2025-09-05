@@ -88,7 +88,6 @@ python3 baseline_round1_seed99.py
 
 ## ROS2 Topic 含义
 
-详细的ROS2 Topic说明暂时无法展示，请参考相关内部文档。
 
 ## 常见问题(FAQ)
 
