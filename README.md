@@ -310,7 +310,7 @@ docker pull xmartev/block_challenge_server:release_v0
 
 打开`scripts/create_container_server.sh`并修改镜像 和 tag名称
 
-![image-20250220193041501](doc/assets/bashserver.png)
+![image-20250220193041501](doc/assets/bashservername.png)
 
 创建server container：
 
