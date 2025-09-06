@@ -171,9 +171,10 @@ elif self.stm.state_idx == 新状态:
    - 检查四元数到旋转矩阵的转换
    - 使用可视化工具验证转换结果# Xmartev Block Challenge Baseline
 
-这是Xmartev Block Challenge Baseline的部署和使用文档，包含环境配置、启动流程和常见问题解答。
 
-## 环境部署
+## 这是Xmartev Block Challenge Baseline的部署和使用文档，包含环境配置、启动流程和常见问题解答。
+
+## 环境部署 
 
 ### 1. 拉取镜像
 
@@ -300,6 +301,8 @@ Published topics:
    - 检查宿主机和容器内的`ROS_DOMAIN_ID`是否一致
    - 确认已正确安装并配置`rmw_cyclonedds_cpp`中间件
    - 检查网络连接和防火墙设置
+
+
 ## Installation
 
 ### 安装docker
@@ -414,7 +417,7 @@ python3 s2r_server.py --round_id 1
 
 本地构建client docker镜像。
 
-#### 从 docker hub 拉取镜像 
+#### 从 docker hub https://hub.docker.com/ 拉取镜像 
 
 ```bash
 docker pull xmartev/block_challenge_client:release_v0
@@ -521,94 +524,8 @@ python3 joy_control_test.py
 +   RB左肩键 （持续按下 控制右侧机械臂）：
     +   操作逻辑同LB。LB、RB可同时按下
 
-## 仿真环境说明
 
-### ROS2 相关
 
-#### Node Info
-
-```yaml
-/MMK2_mujoco_node
-  Subscribers:
-    /cmd_vel: geometry_msgs/msg/Twist
-    /head_forward_position_controller/commands: std_msgs/msg/Float64MultiArray
-    /left_arm_forward_position_controller/commands: std_msgs/msg/Float64MultiArray
-    /right_arm_forward_position_controller/commands: std_msgs/msg/Float64MultiArray
-    /spine_forward_position_controller/commands: std_msgs/msg/Float64MultiArray
-  Publishers:
-    /head_camera/aligned_depth_to_color/image_raw: sensor_msgs/msg/Image
-    /head_camera/color/image_raw: sensor_msgs/msg/Image
-    /left_camera/color/image_raw: sensor_msgs/msg/Image
-    /right_camera/color/image_raw: sensor_msgs/msg/Image
-    /joint_states: sensor_msgs/msg/JointState
-```
-
-#### Topic Info
-
-所有相机的分辨率都是宽640*高480，状态量ros2 topic的发布频率均为24Hz。
-
-```yaml
-Published topics:
- * /clock [rosgraph_msgs/msg/Clock] 1 publisher
-	# 仿真时钟
- * /head_camera/aligned_depth_to_color/camera_info [sensor_msgs/msg/CameraInfo] 1 publisher
- 	# mmk2机器人头部深度相机 内参
- * /head_camera/aligned_depth_to_color/image_raw [sensor_msgs/msg/Image] 1 publisher
- 	# mmk2机器人头部相机的深度图像，和rgb图像对齐，编码格式为mono16，单位毫米
- * /head_camera/color/camera_info [sensor_msgs/msg/CameraInfo] 1 publisher
- 	# mmk2机器人头部rgb相机 内参
- * /head_camera/color/image_raw [sensor_msgs/msg/Image] 1 publisher
- 	# mmk2机器人头部相机的rgb图像，编码格式rgb8
- * /left_camera/color/camera_info [sensor_msgs/msg/CameraInfo] 1 publisher
- 	# mmk2机器人左手rgb相机 内参
- * /left_camera/color/image_raw [sensor_msgs/msg/Image] 1 publisher
- 	# mmk2机器人左侧手臂末端相机的rgb图像，编码格式rgb8
- * /right_camera/color/camera_info [sensor_msgs/msg/CameraInfo] 1 publisher
- 	# mmk2机器人右手rgb相机 内参
- * /right_camera/color/image_raw [sensor_msgs/msg/Image] 1 publisher
- 	# mmk2机器人右侧手臂末端相机的rgb图像，编码格式rgb8
- * /odom [nav_msgs/msg/Odometry] 1 publisher
- 	# mmk2机器人里程计信息
- * /joint_states [sensor_msgs/msg/JointState] 1 publisher
- 	# mmk2机器人全身关节状态量，顺序为 joint_names: [
-    # - slide_joint
-    # - head_yaw_joint
-    # - head_pitch_joint
-    # - left_arm_joint1
-    # - left_arm_joint2
-    # - left_arm_joint3
-    # - left_arm_joint4
-    # - left_arm_joint5
-    # - left_arm_joint6
-    # - left_arm_eef_gripper_joint
-    # - right_arm_joint1
-    # - right_arm_joint2
-    # - right_arm_joint3
-    # - right_arm_joint4
-    # - right_arm_joint5
-    # - right_arm_joint6
-    # - right_arm_eef_gripper_joint ]
- * /s2r2025/taskinfo [std_msgs/msg/String] 1 publisher
- 	# [重要!]发布比赛的任务信息
- 	# 例："round1: Take the sheet from the fourth floor of the left cabinet, and put it on the left table."
- * /s2r2025/gameinfo [std_msgs/msg/String] 1 publisher
-	# [重要!]发布当前比赛的任务完成情况 仅仿真阶段发布
- 	# 例：'{''scoring'': {''a'': False, ''b'': False, ''c'': False}, ''scoring_time'': {''a'': -1.0, ''b'': -1.0, ''c'': -1.0}}'
- 
-Subscribed topics:
- * /cmd_vel [geometry_msgs/msg/Twist] 1 subscriber
- 	# 控制mmk2底盘移动
- * /head_forward_position_controller/commands [std_msgs/msg/Float64MultiArray] 1 subscriber
- 	# 控制mmk2头部移动
- * /left_arm_forward_position_controller/commands [std_msgs/msg/Float64MultiArray] 1 subscriber
- 	# 控制mmk2左臂移动
- * /right_arm_forward_position_controller/commands [std_msgs/msg/Float64MultiArray] 1 subscriber
- 	# 控制mmk2右臂移动
- * /spine_forward_position_controller/commands [std_msgs/msg/Float64MultiArray] 1 subscriber
- 	# 控制mmk2升降移动
-```
-
-选手可在编写策略中通过发布相关的ros2 topic来实现对mmk2机器人的控制，发布的方法可参考`SIM2REAL-2025/s2r2025/joy_control_test.py` `Ros2JoyCtl`中的`pubros2cmd`方法。
 
 ### 逆运动学
 
