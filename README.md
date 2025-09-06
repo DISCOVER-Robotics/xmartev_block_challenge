@@ -227,12 +227,10 @@ docker login
 ### 1. 拉取镜像
 
 ```bash
-# 从镜像仓库拉取（待补充镜像地址）
+# 从镜像仓库拉取（
 
 docker pull crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/block_challenge_client:dev_v1.0
 
-# 或从本地tar包加载镜像
-docker load -i [镜像tar包路径]
 
 # 查看是否成功获取 xmartev/block_challenge_client 镜像
 docker images
@@ -291,6 +289,48 @@ docker exec -it block_challenge_baseline bash
    ```
 
 ## Block Challenge Baseline 使用
+### Build server
+
+在本地运行仿真环境。
+
+环境依赖：
+
++   ubuntu >= 20.04
++   cuda >= 11.8
++   显存 >= 6GB
++   空余硬盘空间 >= 80G
+
+#### 从docker hub拉取镜像
+
+```bash
+docker pull xmartev/block_challenge_server:release_v0
+```
+
+### Run server container
+
+打开`scripts/create_container_server.sh`并修改镜像 和 tag名称
+
+![image-20250220193041501](doc/assets/bashserver.png)
+
+创建server container：
+
+```bash
+cd xmartev_block_challenge/scripts
+bash create_container_server.sh
+```
+
+终端中进入server container：
+
+```bash
+cd xmartev_block_challenge/scripts
+bash exec_server.sh
+```
+
+电脑重启后，需要重新启动容器
+
+```bash
+docker start block_challenge_server
+```
 
 ### 1. 进入工作目录
 
@@ -352,52 +392,6 @@ Published topics:
    - 检查网络连接和防火墙设置
 
 
-#
-
-### Build server
-
-在本地运行仿真环境。
-
-环境依赖：
-
-+   ubuntu >= 20.04
-+   cuda >= 11.8
-+   显存 >= 6GB
-+   空余硬盘空间 >= 80G
-
-#### 从docker hub拉取镜像
-
-```bash
-docker pull xmartev/block_challenge_server:release_v0
-```
-
-
-
-### Run server container
-
-打开`scripts/create_container_server.sh`并修改镜像 和 tag名称
-
-![image-20250220193041501](doc/assets/bashserver.png)
-
-创建server container：
-
-```bash
-cd xmartev_block_challenge/scripts
-bash create_container_server.sh
-```
-
-终端中进入server container：
-
-```bash
-cd xmartev_block_challenge/scripts
-bash exec_server.sh
-```
-
-电脑重启后，需要重新启动容器
-
-```bash
-docker start block_challenge_server
-```
 
 
 
