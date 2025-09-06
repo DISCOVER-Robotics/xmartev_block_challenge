@@ -353,7 +353,7 @@ docker push dockerhub_name/xmartev:tagname
 
 ### 3. 开发比赛任务
 
-根据private repo和tag名字，修改create_containner_client.sh里的镜像名和tag
+根据private repo和tag名字，修改create_container_client.sh里的镜像名和tag
 
 ![image-20250220181043385](./assets/bash.png)
 
