@@ -174,7 +174,55 @@ elif self.stm.state_idx == 新状态:
 
 ## 下面是关于Xmartev Block Challenge Baseline的部署和使用说明，包含环境配置、启动流程和常见问题解答。
 
-## 环境部署 
+# Installation
+
+### 安装docker
+
+若本地尚未安装docker：
+
+```bash
+cd xmartev_block_challenge/scripts
+bash docker_install.sh
+```
+
+验证docker安装：
+
+```bash
+docker --version
+```
+
+安装参考链接，[docker install](https://docs.docker.com/engine/install/ubuntu/)。
+
+### 安装nvidia driver
+
+推荐使用Software & Updates中Additional Drivers安装，创建镜像和容器前需要检查宿主机的显卡驱动是否正常。
+
+打开终端，输入nvidia-smi检查驱动是否安装成功。
+出现显卡信息和驱动版本信息即为安装成功。
+
+安装 nvidia-docker2
+
+```bash
+sudo systemctl --now enable docker
+
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
+   && curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - \
+   && curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+   
+sudo apt-get update
+sudo apt-get install -y nvidia-docker2
+sudo systemctl restart docker
+```
+
+### 注册 dockerhub
+
+注册dockerhub账号：[dockerhub](https://hub.docker.com/) Docker Hub 是一个类似于 GitHub 的平台，只不过它不是存放代码，而是存放 Docker 镜像。选手在client中开发算法，开发完成后打包上传至docker hub，由官方拉取后进行测试。
+
+登录dockerhub账号
+
+```bash
+docker login
+```
 
 ### 1. 拉取镜像
 
@@ -303,55 +351,7 @@ Published topics:
    - 检查网络连接和防火墙设置
 
 
-## Installation
-
-### 安装docker
-
-若本地尚未安装docker：
-
-```bash
-cd xmartev_block_challenge/scripts
-bash docker_install.sh
-```
-
-验证docker安装：
-
-```bash
-docker --version
-```
-
-安装参考链接，[docker install](https://docs.docker.com/engine/install/ubuntu/)。
-
-### 安装nvidia driver
-
-推荐使用Software & Updates中Additional Drivers安装，创建镜像和容器前需要检查宿主机的显卡驱动是否正常。
-
-打开终端，输入nvidia-smi检查驱动是否安装成功。
-出现显卡信息和驱动版本信息即为安装成功。
-
-安装 nvidia-docker2
-
-```bash
-sudo systemctl --now enable docker
-
-distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
-   && curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - \
-   && curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
-   
-sudo apt-get update
-sudo apt-get install -y nvidia-docker2
-sudo systemctl restart docker
-```
-
-### 注册 dockerhub
-
-注册dockerhub账号：[dockerhub](https://hub.docker.com/) Docker Hub 是一个类似于 GitHub 的平台，只不过它不是存放代码，而是存放 Docker 镜像。选手在client中开发算法，开发完成后打包上传至docker hub，由官方拉取后进行测试。
-
-登录dockerhub账号
-
-```bash
-docker login
-```
+#
 
 ### Build server
 
