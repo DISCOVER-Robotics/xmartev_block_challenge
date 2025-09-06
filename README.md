@@ -172,7 +172,7 @@ elif self.stm.state_idx == 新状态:
    - 使用可视化工具验证转换结果# Xmartev Block Challenge Baseline
 
 
-## 这是Xmartev Block Challenge Baseline的部署和使用文档，包含环境配置、启动流程和常见问题解答。
+## 下面是关于Xmartev Block Challenge Baseline的部署和使用说明，包含环境配置、启动流程和常见问题解答。
 
 ## 环境部署 
 
@@ -452,39 +452,6 @@ bash create_container_client.sh
 cd xmartev_block_challenge/scripts
 bash exec_client.sh
 ```
-
-### Test ros2 communication
-
->   ❗️ <CLIENT_CONTAINER_ID>要替换成选手自己构建的client docker container的id，可用`docker ps -a`指令查询
-
-```bash
-# server --> client 通信测试
-(new terminal)
-docker exec -it s2r2025_server bash
-ros2 topic pub /server_test std_msgs/msg/String "data: 'hello from server'"
-
-(new terminal)
-docker exec -it <CLIENT_CONTAINER_ID> bash
-# 查看所有活动的topics
-ros2 topic list
-# 查看topic信息
-ros2 topic info /server_test
-# 测试订阅server发布的消息
-ros2 topic echo /server_test
-
-# client --> server 通信测试
-(new terminal)
-docker exec -it <CLIENT_CONTAINER_ID> bash
-ros2 topic pub /client_test std_msgs/msg/String "data: 'hello from client'"
-
-(new terminal)
-docker exec -it s2r2025_server bash
-# 测试订阅server发布的消息
-ros2 topic echo /client_test
-```
-
-
-
 
 
 ## 上传client镜像
