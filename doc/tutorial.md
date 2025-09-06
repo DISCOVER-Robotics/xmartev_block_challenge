@@ -336,7 +336,7 @@ Memory : 64GB
 
 将client镜像打上tag(tag名称，参赛队伍可以自定义)，dockerhub_name为dcokerhub的账号名字
 ```
-docker tag xmartev/block_challenge_client:v1.0 dockerhub_name/xmartev:tagname 
+docker tag client_name:client_tag dockerhub_name/xmartev:tagname 
 ```
 ![change_docker_tag](./assets/3.png)
 
