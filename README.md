@@ -1,6 +1,6 @@
 # XMARTEV 机器人控制系统教程
 
-## 部署指南
+## server部署指南
 
 # Installation
 
@@ -69,14 +69,16 @@ docker login
 #### 从docker hub拉取镜像
 
 ```bash
+docker pull xmartev/block_challenge_server:release_v0
+
 docker pull crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/block_challenge_server:release_v0
 ```
 
 ### Run server container
 
-打开`scripts/create_container_server.sh`并修改镜像 和 tag名称
+打开`scripts/create_container_server.sh`并修改镜像 和 tag名称（tag名称以最新的版本为准）
 
-![image-20250220193041501](doc/readme_assets/bashservername.png)
+![alt text](doc/readme_assets/create_container_server.png)
 
 创建server container：
 
@@ -97,21 +99,22 @@ bash exec_server.sh
 ```bash
 docker start block_challenge_server
 ```
-# 部署
+
+## Client部署
 ### 1. 拉取client镜像
 
 ```bash
-# 从镜像仓库拉取（
+# 从镜像仓库拉取
+docker pull xmartev/block_challenge_client:release_v0
 
-docker pull crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/block_challenge_client:dev_v1.0
-
+# 如果因为网络问题拉取失败，以下提供了国内的镜像仓库
+docker pull crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/block_challenge_client:release_v0
 
 # 查看是否成功获取 xmartev/block_challenge_client 镜像
 docker images
 ```
 
 ### 2. 创建Docker容器
-
 
 下载create_container_baseline.sh 然后执行
 ```bash
@@ -141,14 +144,6 @@ docker exec -it block_challenge_baseline bash
 
 2. 在第二个终端，在宿主机上设置环境变量并运行接收节点：
    ```bash
-   # 安装对应版本的中间件
-   sudo apt update
-   sudo apt install ros-<distro>-rmw-cyclonedds-cpp
-   
-   # 设置环境变量（可写入.bashrc或.zshrc中持久化）
-   export ROS_DOMAIN_ID=99
-   export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-   
    # 运行接收节点
    ros2 run demo_nodes_cpp listener
    ```
@@ -163,7 +158,6 @@ docker exec -it block_challenge_baseline bash
    ```
 
 ## Block Challenge Baseline 使用
-
 
 ### 1. 进入工作目录
 
@@ -214,6 +208,8 @@ Published topics:
  	# yolo检测结果可视化图像
 ```
 
+关于baseline进一步的说明，请参考[baseline说明](doc/baseline.md)。
+
 ## 常见问题(FAQ)
 
 1. 运行baseline时出现特定错误提示，提示需要启动server端
@@ -234,7 +230,7 @@ Published topics:
 选手在client中开发算法，开发完成后打包上传至docker hub，由官方拉取后进行测试，测试使用电脑配置为：
 
 ```
-cpu : 13th Gen Intel Core i7013700KF x24
+cpu : 13th Gen Intel Core i7 13700KF x24
 gpu : GeForce RTX 4090 24G
 Memory : 64GB
 ```
@@ -257,6 +253,7 @@ docker login
 ```
 docker tag client_name:client_tag dockerhub_name/xmartev:tagname 
 ```
+在以下示例中，dockerhub_name为`zeyu1999`
 ![change_docker_tag](doc/readme_assets/3.png)
 
 将新tag的client镜像push到private repo
@@ -302,7 +299,7 @@ docker push dockerhub_name/xmartev:new_tag
 
 参考连接：[docker token](https://docs.docker.com/docker-hub/access-tokens/)
 
-在需要提交测试的版本时，将dockerhub用户名、docker token由比赛系统提交。
+在需要提交测试的版本时，选手需要将自己的dockerhub用户名、docker token 和 镜像的tag由比赛系统提交。以下为生成docker token的指南。
 
 ![enter_account_setting](doc/readme_assets/8.png)
 
