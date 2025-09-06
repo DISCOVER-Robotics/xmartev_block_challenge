@@ -303,7 +303,7 @@ docker exec -it block_challenge_baseline bash
 #### 从docker hub拉取镜像
 
 ```bash
-docker pull xmartev/block_challenge_server:release_v0
+docker pull crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/block_challenge_server:dev_v1.0
 ```
 
 ### Run server container
