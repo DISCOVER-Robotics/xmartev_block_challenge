@@ -414,36 +414,7 @@ python3 s2r_server.py --round_id 1
 # round_id 为 [1、2、3] 对应比赛的轮数
 ```
 
-### Build client
 
-本地构建client docker镜像。
-
-#### 从 docker hub https://hub.docker.com/ 拉取镜像 
-
-```bash
-docker pull xmartev/block_challenge_client:release_v0
-```
-
-
-### Run client container
-
-打开`create_container_client.sh`并修改镜像 和 tag名称
-
-![image-20250220211718735](doc/assets/bash2.png)
-
-创建client container：
-
-```bash
-cd xmartev_block_challenge/scripts
-bash create_container_client.sh
-```
-
-终端中进入client container：
-
-```bash
-cd xmartev_block_challenge/scripts
-bash exec_client.sh
-```
 
 
 ## 上传选手开发完的client镜像
