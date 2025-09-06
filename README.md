@@ -241,7 +241,7 @@ docker exec -it block_challenge_baseline bash
    echo $ROS_DOMAIN_ID
    ```
 
-## Block Chanllenge Baseline 使用
+## Block Challenge Baseline 使用
 
 ### 1. 进入工作目录
 
