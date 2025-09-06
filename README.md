@@ -398,22 +398,6 @@ bash exec_server.sh
 docker start block_challenge_server
 ```
 
-❗️ 若后续比赛有内容更新，请进入容器中更新
-
-```bash
-cd xmartev_block_challenge/scripts && bash exec_server.sh
-cd xmartev_block_challenge
-git pull
-```
-
-启动比赛。进入server 容器的终端：
-
-```bash
-cd /workspace/xmartev_block_challenge/s2r2025
-python3 s2r_server.py --round_id 1
-# round_id 为 [1、2、3] 对应比赛的轮数
-```
-
 
 
 
