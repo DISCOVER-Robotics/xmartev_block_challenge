@@ -110,7 +110,7 @@ python3 s2r_server.py --round_id 1
 
 ### Build client
 
-和server一样，选手可以通过直接拉取远程镜像或使用docker file构建两种方式来在本地构建client docker镜像。
+本地构建client docker镜像。
 
 #### 从 docker hub 拉取镜像 
 
