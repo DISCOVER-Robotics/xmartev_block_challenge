@@ -228,21 +228,22 @@ docker login
 
 ```bash
 # 从镜像仓库拉取（待补充镜像地址）
-docker pull [镜像地址]
+
+docker pull crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/block_challenge_client:dev_v1.0
 
 # 或从本地tar包加载镜像
 docker load -i [镜像tar包路径]
 
-# 查看是否成功获取 xmartev/block_challenge_baseline 镜像
+# 查看是否成功获取 xmartev/block_challenge_client 镜像
 docker images
 ```
 
 ### 2. 创建Docker容器
 
-下载`create_container_client.sh`脚本到本地，然后执行：
+下载`create_container_baseline.sh`脚本到本地，然后执行：
 
 ```bash
-bash create_container_client.sh
+bash create_container_baseline.sh
 
 # 查看容器是否创建成功
 docker ps
@@ -294,8 +295,8 @@ docker exec -it block_challenge_baseline bash
 ### 1. 进入工作目录
 
 ```bash
-docker exec -it block_challenge_baseline bash
-cd /workspace/block_challenge_baseline
+docker exec -it block_challenge_client bash
+cd /workspace/block_challenge_client
 ```
 
 ### 2. 运行baseline
