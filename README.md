@@ -234,6 +234,40 @@ sudo systemctl restart docker
 ```bash
 docker login
 ```
+### Build server
+
+
+#### 从docker hub拉取镜像
+
+```bash
+docker pull crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/block_challenge_server:dev_v1.0
+```
+
+### Run server container
+
+打开`scripts/create_container_server.sh`并修改镜像 和 tag名称
+
+![image-20250220193041501](doc/assets/bashservername.png)
+
+创建server container：
+
+```bash
+cd xmartev_block_challenge/scripts
+bash create_container_server.sh
+```
+
+终端中进入server container：
+
+```bash
+cd xmartev_block_challenge/scripts
+bash exec_server.sh
+```
+
+电脑重启后，需要重新启动容器
+
+```bash
+docker start block_challenge_server
+```
 # 部署
 ### 1. 拉取client镜像
 
@@ -300,40 +334,7 @@ docker exec -it block_challenge_baseline bash
    ```
 
 ## Block Challenge Baseline 使用
-### Build server
 
-
-#### 从docker hub拉取镜像
-
-```bash
-docker pull crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/block_challenge_server:dev_v1.0
-```
-
-### Run server container
-
-打开`scripts/create_container_server.sh`并修改镜像 和 tag名称
-
-![image-20250220193041501](doc/assets/bashservername.png)
-
-创建server container：
-
-```bash
-cd xmartev_block_challenge/scripts
-bash create_container_server.sh
-```
-
-终端中进入server container：
-
-```bash
-cd xmartev_block_challenge/scripts
-bash exec_server.sh
-```
-
-电脑重启后，需要重新启动容器
-
-```bash
-docker start block_challenge_server
-```
 
 ### 1. 进入工作目录
 
