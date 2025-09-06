@@ -1,6 +1,6 @@
-docker rm -f s2r2025_server
+docker rm -f block_challenge_server
 
-docker run -id --name s2r2025_server --gpus all \
+docker run -id --name block_challenge_server --gpus all \
     --privileged=true \
     --network=host \
     --ipc=host \
@@ -12,7 +12,7 @@ docker run -id --name s2r2025_server --gpus all \
     -e NVIDIA_DRIVER_CAPABILITIES=all \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -v /dev/input:/dev/input \
-    discoverse/s2r2025_server:real_v0 bash
+    xmartev/block_challenge_server:release_v0 bash
 
 xhost +
 
