@@ -327,6 +327,7 @@ docker --version
 推荐使用Software & Updates中Additional Drivers安装，创建镜像和容器前需要检查宿主机的显卡驱动是否正常。
 
 打开终端，输入nvidia-smi检查驱动是否安装成功。
+出现显卡信息和驱动版本信息即为安装成功。
 
 安装 nvidia-docker2
 
@@ -344,7 +345,7 @@ sudo systemctl restart docker
 
 ### 注册 dockerhub
 
-注册dockerhub账号：[dockerhub](https://hub.docker.com/)
+注册dockerhub账号：[dockerhub](https://hub.docker.com/) Docker Hub 是一个类似于 GitHub 的平台，只不过它不是存放代码，而是存放 Docker 镜像。选手在client中开发算法，开发完成后打包上传至docker hub，由官方拉取后进行测试。
 
 登录dockerhub账号
 
@@ -436,7 +437,7 @@ docker build -f Dockerfile.client -t <YOUR-TEAM-NAME>:<TAG> .
 
 打开`create_container_client.sh`并修改镜像 和 tag名称
 
-![image-20250220211718735](./assets/bash2.png)
+![image-20250220211718735](doc/assets/bash2.png)
 
 创建client container：
 
@@ -482,56 +483,9 @@ docker exec -it s2r2025_server bash
 ros2 topic echo /client_test
 ```
 
-## 用手柄遥控MMK2
-
-MMK2（Mobile Manipulation Kit 2）是本次比赛使用的机器人平台，MMK2是人形升降双臂机器人的名字，以下是使用手柄操作仿真环境里的MMK2的操作指南。
-
-```bash
-(new terminal) # 启动比赛
-docker exec -it s2r2025_server bash
-cd /workspace/SIM2REAL-2025/s2r2025
-python3 s2r_server.py --round_id 1
-
-(new terminal)
-docker exec -it s2r2025_server bash
-# 需要先连接手柄
-# ls /dev/input/ | grep js
-# 如果有js0则说明已经在container中识别到了手柄
-ros2 run joy joy_node
-
-(new terminal) 
-docker exec -it s2r2025_server bash
-cd /workspace/SIM2REAL-2025/s2r2025
-# 如果是Logitech类手柄，将/workspace/SIM2REAL-2025/s2r2025/joy_control_test.py
-# line 14 `NUM_BUTTON=12` 改成 `NUM_BUTTON=11`
-python3 joy_control_test.py
-```
-
-手柄操作说明（以XBOX360为例）：
-
-+   左摇杆：控制底盘移动
-+   右摇杆：控制头部运动
-+   LT左扳机：升降提高
-+   RT右扳机：升降降低
-+   LB左肩键 （持续按下 控制左侧机械臂）：
-    +   方向键 上下：机械臂末端沿x轴平移
-    +   方向键 左右：机械臂末端沿y轴平移
-    +   左摇杆 上下：机械臂末端沿z轴平移
-    +   左摇杆 左右：机械臂末端绕z轴旋转
-    +   右摇杆 左右：机械臂末端绕x轴旋转
-    +   右摇杆 上下：机械臂末端绕y轴旋转
-    +   LT、RT：控制夹爪开合
-+   RB左肩键 （持续按下 控制右侧机械臂）：
-    +   操作逻辑同LB。LB、RB可同时按下
 
 
 
-
-### 逆运动学
-
-请参考`SIM2REAL-2025/s2r2025/joy_control_test.py` `Ros2JoyCtl`中的`teleopProcess`方法。
-
-机器人的urdf和mesh可在`SIM2REAL-2025/models/mmk2_model`找到。
 
 ## 上传client镜像
 
