@@ -423,7 +423,7 @@ Memory : 64GB
 docker login
 ```
 
-将client镜像打上tag(tag名称，参赛队伍可以自定义)，dockerhub_name为dcokerhub的账号名字
+将client镜像打上tag(tag名称，参赛队伍可以自定义)，client_name是本地已有的镜像名，client_tag是它的标签，dockerhub_name为dockerhub的账号名字
 ```
 docker tag client_name:client_tag dockerhub_name/xmartev:tagname 
 ```
@@ -454,7 +454,7 @@ docker push dockerhub_name/xmartev:tagname
 
 本地保存镜像修改内容，使用原有的tag会覆盖之前tag版本的内容
 ```
-docker commit client_name dockerhub_name/xmartev:new_tag
+docker commit container_name dockerhub_name/xmartev:new_tag
 ```
 
 ![image-20250220181624907](doc/assets/6.png)
