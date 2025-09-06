@@ -283,8 +283,10 @@ docker images
 
 ### 2. 创建Docker容器
 
-下载`create_container_baseline.sh`脚本到本地，然后执行：
+打开create_container_client.sh并修改镜像 和 tag名称
+![image-250220193041501](doc/assets/1757170406357.png)
 
+然后执行
 ```bash
 bash create_container_baseline.sh
 
