@@ -1,10 +1,16 @@
 # XMARTEV 机器人控制系统教程
 
+环境依赖：
+```
+ubuntu >= 20.04
+cuda >= 11.8
+显存 >= 6GB
+空余硬盘空间 >= 80G
+```
+
 ## server部署指南
 
-# Installation
-
-### 安装git
+### 1. 安装git
 
 打开终端输入
 ```
@@ -13,10 +19,10 @@ sudo apt install git -y
 ```
 终端输入下面命令git clone到本地
 ```
-git clone https://github.com/DISCOVER-Robotics/xmartev_block_challenge.git
+GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/DISCOVER-Robotics/xmartev_block_challenge.git
 cd xmartev_block_challenge
 ```
-### 安装docker
+### 2. 安装docker
 
 若本地尚未安装docker：
 
@@ -33,7 +39,7 @@ docker --version
 
 安装参考链接，[docker install](https://docs.docker.com/engine/install/ubuntu/)。
 
-### 安装nvidia driver
+### 3. 安装nvidia driver
 
 推荐使用Software & Updates中Additional Drivers安装，创建镜像和容器前需要检查宿主机的显卡驱动是否正常。
 
@@ -54,7 +60,7 @@ sudo apt-get install -y nvidia-docker2
 sudo systemctl restart docker
 ```
 
-### 注册 dockerhub
+### 4. 注册 dockerhub
 
 注册dockerhub账号：[dockerhub](https://hub.docker.com/) Docker Hub 是一个类似于 GitHub 的平台，只不过它不是存放代码，而是存放 Docker 镜像。选手在client中开发算法，开发完成后打包上传至docker hub，由官方拉取后进行测试。
 
@@ -63,20 +69,23 @@ sudo systemctl restart docker
 ```bash
 docker login
 ```
-### Build server
 
-
-#### 从docker hub拉取镜像
+### 5. 从docker hub拉取镜像
 
 ```bash
+# 从docker hub拉取
 docker pull xmartev/block_challenge_server:release_v0
 
+# 如果因为网络问题拉取失败，提供了国内的镜像仓库
 docker pull crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/block_challenge_server:release_v0
+
+# 查看是否成功获取 xmartev/block_challenge_server 镜像，如果有输出则说明成功拉取到本地
+docker images | grep block_challenge_server
 ```
 
-### Run server container
+### 6. Run server container
 
-打开`scripts/create_container_server.sh`并修改镜像 和 tag名称（tag名称以最新的版本为准）
+打开[`scripts/create_container_server.sh`](scripts/create_container_server.sh)并修改镜像 和 tag名称（tag名称以最新的版本为准），如果使用国内镜像源拉取，则需要将第15行的`xmartev/`修改成`crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/`
 
 ![alt text](doc/readme_assets/create_container_server.png)
 
@@ -107,27 +116,31 @@ docker start block_challenge_server
 # 从镜像仓库拉取
 docker pull xmartev/block_challenge_client:release_v0
 
-# 如果因为网络问题拉取失败，以下提供了国内的镜像仓库
+# 如果因为网络问题拉取失败，提供了国内的镜像仓库
 docker pull crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/block_challenge_client:release_v0
 
-# 查看是否成功获取 xmartev/block_challenge_client 镜像
-docker images
+# 查看是否成功获取 xmartev/block_challenge_client 镜像，如果有输出则说明成功拉取到本地
+docker images | grep block_challenge_client
 ```
 
 ### 2. 创建Docker容器
 
-下载create_container_baseline.sh 然后执行
-```bash
-bash create_container_baseline.sh
+打开[`scripts/create_container_client.sh`](scripts/create_container_client.sh)并修改镜像 和 tag名称，tag`example_tag`需要修改为实际的最新tag，如果是从国内镜像源拉取，第15行的`xmartev/`需要修改为国内镜像源名称，例如`crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/`
 
-# 查看容器是否创建成功
-docker ps
+![image-20250907022216927](doc/readme_assets/image-20250907022216927.png)
+
+然后执行
+
+```bash
+cd xmartev_block_challenge/scripts
+bash create_container_client.sh
 ```
 
 ### 3. 进入Docker容器
 
 ```bash
-docker exec -it block_challenge_baseline bash
+cd xmartev_block_challenge/scripts
+bash exec_client.sh
 ```
 
 ### 4. 验证ROS2通信
@@ -220,11 +233,6 @@ Published topics:
    - 确认已正确安装并配置`rmw_cyclonedds_cpp`中间件
    - 检查网络连接和防火墙设置
 
-
-
-
-
-
 ## 完成开发后上传client镜像
 
 选手在client中开发算法，开发完成后打包上传至docker hub，由官方拉取后进行测试，测试使用电脑配置为：
@@ -299,7 +307,8 @@ docker push dockerhub_name/xmartev:new_tag
 
 参考连接：[docker token](https://docs.docker.com/docker-hub/access-tokens/)
 
-在需要提交测试的版本时，选手需要将自己的dockerhub用户名、docker token 和 镜像的tag由比赛系统提交。以下为生成docker token的指南。
+>   非常重要：在需要提交测试的版本时，选手需要将自己的dockerhub用户名、docker token 和 镜像的tag由比赛系统提交。以下为生成docker token的指南。
+>
 
 ![enter_account_setting](doc/readme_assets/8.png)
 
