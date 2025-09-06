@@ -199,7 +199,7 @@ docker --version
 
 打开终端，输入nvidia-smi检查驱动是否安装成功。
 出现显卡信息和驱动版本信息即为安装成功。
-
+(doc/assets/nvidiasmi.png)
 安装 nvidia-docker2
 
 ```bash
