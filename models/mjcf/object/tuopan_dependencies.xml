@@ -1,0 +1,18 @@
+<mujocoinclude>
+  <asset>
+    <mesh name="tuopan" file="object/tuopan/tuopan.obj" />
+    <mesh name="tuopan_part_0" file="object/tuopan/part_0.obj" />
+    <mesh name="tuopan_part_1" file="object/tuopan/part_1.obj" />
+    <mesh name="tuopan_part_2" file="object/tuopan/part_2.obj" />
+    <mesh name="tuopan_part_3" file="object/tuopan/part_3.obj" />
+    <mesh name="tuopan_part_4" file="object/tuopan/part_4.obj" />
+    <mesh name="tuopan_part_5" file="object/tuopan/part_5.obj" />
+    <mesh name="tuopan_part_6" file="object/tuopan/part_6.obj" />
+    <mesh name="tuopan_part_7" file="object/tuopan/part_7.obj" />
+    <mesh name="tuopan_part_8" file="object/tuopan/part_8.obj" />
+    <mesh name="tuopan_part_9" file="object/tuopan/part_9.obj" />
+    <mesh name="tuopan_part_10" file="object/tuopan/part_10.obj" />
+    <mesh name="tuopan_part_11" file="object/tuopan/part_11.obj" />
+    <mesh name="tuopan_part_12" file="object/tuopan/part_12.obj" />
+  </asset>
+</mujocoinclude>

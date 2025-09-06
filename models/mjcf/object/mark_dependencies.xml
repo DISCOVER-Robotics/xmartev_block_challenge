@@ -1,0 +1,9 @@
+<mujocoinclude>
+  <asset>
+    <mesh name="mark" file="object/mark/mark.obj" />
+    <mesh name="mark_part_0" file="object/mark/part_0.obj" />
+    <mesh name="mark_part_1" file="object/mark/part_1.obj" />
+    <mesh name="mark_part_2" file="object/mark/part_2.obj" />
+    <mesh name="mark_part_3" file="object/mark/part_3.obj" />
+  </asset>
+</mujocoinclude>

@@ -1,0 +1,160 @@
+<!-- 极视角赛题2场景 -->
+<mujoco model="jishijiao_s2">
+  <include file="airbot_play/airbot_play_options.xml"/>
+  <include file="airbot_play/airbot_play_dependencies.xml"/>
+
+  <option integrator="implicitfast">
+    <flag multiccd="enable"/>
+  </option>
+
+  <visual>
+    <global offwidth="1920" offheight="1080"/>
+    <quality shadowsize="4096" offsamples="4"/>
+    <headlight diffuse='0.6 0.6 0.6' ambient='.3 .3 .3' specular='0 0 0'/>
+    <scale com="0.05" camera="0.06" framelength="0.5" framewidth="0.02" forcewidth="0.1" contactwidth="0.01" contactheight="0.05"/>
+  </visual>
+
+  <asset>
+    <texture type='2d' name='groundplane' builtin='checker' mark='edge' rgb1='0.2 0.3 0.4' rgb2='0.1 0.2 0.3' markrgb='0.8 0.8 0.8' width='300' height='300'/>
+    <material name='groundplane' texture='groundplane' texuniform='true' texrepeat='5 5' reflectance='0.2'/>
+  </asset>
+
+  <include file="object/tuopan_dependencies.xml"/>
+  <include file="object/code1_dependencies.xml"/>
+  <include file="object/code2_dependencies.xml"/>
+  <include file="object/code3_dependencies.xml"/>
+  <include file="object/code4_dependencies.xml"/>
+  <include file="object/mark_dependencies.xml"/>
+
+  <compiler angle="radian" meshdir="../meshes" texturedir="../textures/"/>
+
+  <default>
+    <default class="obj_visual">
+      <geom group="2" type="mesh" contype="0" conaffinity="0"/>
+    </default>
+    <default class="obj_collision">
+      <geom group="3" condim="3" solimp="0.99 0.995 0.01" solref="0.005 1" friction="1 0.005 0.0001" type="mesh"/>
+    </default>
+  </default>
+
+  <worldbody>
+    <light castshadow="false" directional='true' diffuse='.3 .3 .3' specular='0.3 0.3 0.3' pos='-1 -1 2.5' dir='1 1 -1'/>
+    <light directional='true' diffuse='.3 .3 .3' specular='0.3 0.3 0.3' pos='1 -1 2.5' dir='-1 1 -1'/>
+    <light castshadow="false" directional='true' diffuse='.3 .3 .3' specular='0.3 0.3 0.3' pos='0 1 2.5' dir='0 -1 -1'/>
+    <geom name='floor' type='plane' size='0 0 0.01'/>
+
+    <site name="manipulator_locate" pos="0.12 0.80 0.75" euler="0 0 3.15159"/>
+
+    <site name="site_round2_target" pos="-1.0 -0.05 0.75" size="0.001" rgba="0 0 0 1" type="sphere"/>
+    <site name="site_round3_target" pos="-1.0  0.15 0.75" size="0.001" rgba="0 0 0 1" type="sphere"/>
+  
+    <body name="arm_pose" pos="0.12 0.80 0.75" euler="0 0 3.15159">
+      <include file="airbot_play/airbot_play.xml"/>
+    </body>
+
+    <!-- mark-定位格 -->
+    <body name="mark" pos="-0.090 0.405 0.75" euler="0 0 0"/>
+
+    <body name="tuopan" pos="-0.2 0.80 0.75" euler="0 0 0">
+      <include file="object/tuopan.xml"/>
+    </body>
+
+    <!-- 左1 -->
+    <body name="code1_1" pos="-0.20 0.98 0.754" euler="0 0 0">
+      <joint type="free"/>
+      <inertial pos="0 0 0.018" mass="0.001" diaginertia="1e-07 1e-07 1e-07"/>
+      <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code1" class="obj_visual"/>
+      <geom type="box" rgba="0 1 0 0.8" size="0.03 0.015 0.015" pos="0 0 0.015" class="obj_collision"/>
+    </body>
+
+    <!-- 左2 -->
+    <body name="code1_2" pos="-0.28 0.95 0.754" euler="0 0 0.5">
+      <joint type="free"/>
+      <inertial pos="0 0 0.018" mass="0.001" diaginertia="1e-07 1e-07 1e-07"/>
+      <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code1" class="obj_visual"/>
+      <geom type="box" rgba="0 1 0 0.8" size="0.03 0.015 0.015" pos="0 0 0.015" class="obj_collision"/>
+    </body>
+
+    <!-- 左3_baseline -->
+    <body name="code1_3" pos="-0.18 0.780 0.754" euler="0 0 0">
+      <joint type="free"/>
+      <inertial pos="0 0 0.018" mass="0.001" diaginertia="1e-07 1e-07 1e-07"/>
+      <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code1" class="obj_visual"/>
+      <geom type="box" rgba="0 1 0 0.8" size="0.03 0.015 0.015" pos="0 0 0.015" class="obj_collision"/>
+    </body>
+
+    <!-- 左4 -->
+    <body name="code1_4" pos="-0.23 0.9 0.754" euler="0 0 -0.9">
+      <joint type="free"/>
+      <inertial pos="0 0 0.018" mass="0.001" diaginertia="1e-07 1e-07 1e-07"/>
+      <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code1" class="obj_visual"/>
+      <geom type="box" rgba="0 1 0 0.8" size="0.03 0.015 0.015" pos="0 0 0.015" class="obj_collision"/>
+    </body>
+
+    <!-- 梯形1  -->
+    <body name="code2_1" pos="-0.14 0.90 0.754" euler="0 0 0">
+      <joint type="free"/>
+      <inertial pos="0 0 0.012" mass="0.001" diaginertia="1e-07 1e-07 1e-07"/>
+      <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code2" class="obj_visual"/>
+      <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code2" class="obj_collision"/>
+    </body>
+
+    <!-- 梯形2  -->
+    <body name="code2_2" pos="-0.28 0.75 0.754" euler="0 0 0">
+      <joint type="free"/>
+      <inertial pos="0 0 0.012" mass="0.001" diaginertia="1e-07 1e-07 1e-07"/>
+      <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code2" class="obj_visual"/>
+      <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code2" class="obj_collision"/>
+    </body>
+
+    <!-- 梯形3  -->
+    <body name="code2_3" pos="-0.30 0.82 0.754" euler="0 0 2.00">
+      <joint type="free"/>
+      <inertial pos="0 0 0.012" mass="0.001" diaginertia="1e-07 1e-07 1e-07"/>
+      <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code2" class="obj_visual"/>
+      <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code2" class="obj_collision"/>
+    </body>
+
+    <!-- 编号3_1 -->
+    <body name="code3_1" pos="-0.12 0.7 0.754" euler="0 0 0">
+      <joint type="free"/>
+      <inertial pos="0 0 0.0295" mass="0.001" diaginertia="1e-07 1e-07 1e-07"/>
+      <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code3" class="obj_visual"/>
+      <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code3" class="obj_collision"/>
+    </body>
+
+
+    <!-- 编号3_2 -->
+    <body name="code3_2" pos="-0.28 0.68 0.754" euler="0 0 0">
+      <joint type="free"/>
+      <inertial pos="0 0 0.0295" mass="0.001" diaginertia="1e-07 1e-07 1e-07"/>
+      <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code3" class="obj_visual"/>
+      <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code3" class="obj_collision"/>
+    </body>
+
+    <!-- 编号4 -->
+    <body name="code4" pos="-0.2 0.68 0.77" euler="0 0 0">
+      <joint type="free"/>
+      <inertial pos="0 0 0.01" mass="0.001" diaginertia="1e-07 1e-07 1e-07"/>
+      <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code4" class="obj_visual"/>
+      <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code4" class="obj_collision"/>
+    </body>
+
+    <body name="background" pos="-0.18 0.75 0.0" euler="0 0 0">
+      <geom size="0.4 0.8 0.01" pos="0 0 0.74" euler="0 0 0" type="box" contype="0" conaffinity="1" rgba="1 1 1 1"/>
+      <geom size="0.02 0.02 0.37" pos="0.35 0.75 0.37" type="box" rgba="0.15 0.15 0.15 1"/>
+      <geom size="0.02 0.02 0.37" pos="-0.35 0.75 0.37" type="box" rgba="0.15 0.15 0.15 1"/>
+      <geom size="0.02 0.02 0.37" pos="0.35 -0.75 0.37" type="box" rgba="0.15 0.15 0.15 1"/>
+      <geom size="0.02 0.02 0.37" pos="-0.35 -0.75 0.37" type="box" rgba="0.15 0.15 0.15 1"/>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <include file="airbot_play/airbot_play_control.xml"/>
+  </actuator>
+
+  <sensor>
+    <include file="airbot_play/airbot_play_sensor.xml"/>
+  </sensor>
+
+</mujoco>

@@ -1,0 +1,176 @@
+{
+    "successfully_placed_code_1_1" : {
+        "phase" : "Object Grasping",
+        "description" : "Successful placement of code_1_1",
+        "score": 8,
+        "state_score": 1,
+        "type" : "multi_object_in_3d_range",
+        "object_names" : ["code1_1","code1_2","code1_3","code1_4"],
+        "range" : 
+        {
+            "x" : [-0.1805, -0.1745],
+            "y" : [0.403, 0.409],
+            "z" : [0.751, 0.757]
+        }
+    },
+    "successfully_placed_code_1_2" : {
+        "phase" : "Object Grasping",
+        "description" : "Successful placement of code_1_2",
+        "score": 8,
+        "state_score": 1,
+        "type" : "multi_object_in_3d_range",
+        "object_names" : ["code1_1","code1_2","code1_3","code1_4"],
+        "range" : 
+        {
+            "x" : [-0.119, -0.113],
+            "y" : [0.403, 0.409],
+            "z" : [0.751, 0.757]
+        }
+    },
+    "successfully_placed_code_1_3" : {
+        "phase" : "Object Grasping",
+        "description" : "Successful placement of code_1_3",
+        "score": 8,
+        "state_score": 1,
+        "type" : "multi_object_in_3d_range",
+        "object_names" : ["code1_1","code1_2","code1_3","code1_4"],
+        "range" : 
+        {
+            "x" : [-0.0575, -0.0515],
+            "y" : [0.403, 0.409],
+            "z" : [0.751, 0.757]
+        }
+
+    },
+    "successfully_placed_code_1_4" : {
+        "phase" : "Object Grasping",
+        "description" : "Successful placement of code_1_4",
+        "score": 8,
+        "state_score": 1,
+        "type" : "multi_object_in_3d_range",
+        "object_names" : ["code1_1","code1_2","code1_3","code1_4"],
+        "range" : 
+        {
+            "x" : [0.004, 0.01],
+            "y" : [0.403, 0.409],
+            "z" : [0.751, 0.757]
+
+        }
+    },
+
+
+    "successfully_placed_code_2_1" : {
+        "phase" : "Object Grasping",
+        "description" : "Successful placement of code_2_1",
+        "score": 8,
+        "state_score": 1,
+        "type" : "multi_object_in_3d_range",
+        "prerequisite" : [
+            "successfully_placed_code_1_1",
+            "successfully_placed_code_1_2"
+        ],
+        "object_names" : ["code2_1","code2_2","code2_3"],
+        "range" : 
+        {
+            "x" : [-0.176, -0.152],
+            "y" : [0.403, 0.409],
+            "z" : [0.781, 0.787]
+        }
+    },
+
+    "successfully_placed_code_2_2" : {
+        "phase" : "Object Grasping",
+        "description" : "Successful placement of code_2_1",
+        "score": 8,
+        "state_score": 1,
+        "type" : "multi_object_in_3d_range",
+        "prerequisite" : [
+            "successfully_placed_code_1_3",
+            "successfully_placed_code_1_4"
+        ],
+        "object_names" : ["code2_1","code2_2","code2_3"],
+        "range" : 
+        {
+            "x" : [-0.045, 0.006],
+            "y" : [0.403, 0.409],
+            "z" : [0.781, 0.787]
+
+        }
+    },
+
+    "successfully_placed_code_3_1" : {
+        "phase" : "Object Grasping",
+        "description" : "Successful placement of code_3_1",
+        "score": 8,
+        "state_score": 1,
+        "type" : "multi_object_in_3d_range",
+        "prerequisite" : [
+            "successfully_placed_code_1_2"
+        ],
+        "object_names" : ["code3_1","code3_2"],
+        "range" : 
+        {
+            "x" : [-0.123, -0.009],
+            "y" : [0.403, 0.409],
+            "z" : [0.781, 0.787]
+
+        }
+    },
+
+    "successfully_placed_code_3_2" : {
+        "phase" : "Object Grasping",
+        "description" : "Successful placement of code_3_2",
+        "score": 8,
+        "state_score": 1,
+        "type" : "multi_object_in_3d_range",
+        "prerequisite" : [
+            "successfully_placed_code_1_3"
+        ],
+        "object_names" : ["code3_1","code3_2"],
+        "range" : 
+        {
+            "x" : [-0.071, -0.047],
+            "y" : [0.403, 0.409],
+            "z" : [0.781, 0.787]
+
+        }
+    },
+
+    "successfully_placed_code_2_3" : {
+        "phase" : "Object Grasping",
+        "description" : "Successful placement of code_2_3",
+        "score": 8,
+        "state_score": 1,
+        "type" : "multi_object_in_3d_range",
+        "prerequisite" : [
+            "successfully_placed_code_3_1","successfully_placed_code_3_2"
+        ],
+        "object_names" : ["code2_1","code2_2","code2_3"],
+        "range" : 
+        {
+            "x" : [-0.088, -0.082],
+            "y" : [0.403, 0.409],
+            "z" : [0.841, 0.847]
+
+        }
+    },
+
+    "successfully_placed_code_4_1" : {
+        "phase" : "Object Grasping",
+        "description" : "Successful placement of code_4_1",
+        "score": 8,
+        "state_score": 1,
+        "type" : "multi_object_in_3d_range",
+        "prerequisite" : [
+            "successfully_placed_code_2_3"
+        ],
+        "object_names" : ["code4"],
+        "range" : 
+        {
+            "x" : [-0.088, -0.082],
+            "y" : [0.403, 0.409],
+            "z" : [0.871, 0.877]
+        }
+    }
+}
+
