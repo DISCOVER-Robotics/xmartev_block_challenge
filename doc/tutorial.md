@@ -324,7 +324,7 @@ gpu : GeForce RTX 4090 24G
 Memory : 64GB
 ```
 
-### 1. 新建privtate repo
+### 1. 新建private repo
 
 参赛队伍在自己注册的dockerhub上新建一个private repo，名字为xmartev
 
@@ -333,6 +333,10 @@ Memory : 64GB
 ![alt text](./assets/2.png)
 
 ### 2. 将client镜像push到private repo
+
+```
+docker login
+```
 
 将client镜像打上tag(tag名称，参赛队伍可以自定义)，dockerhub_name为dcokerhub的账号名字
 ```
@@ -365,7 +369,7 @@ docker push dockerhub_name/xmartev:tagname
 
 本地保存镜像修改内容，使用原有的tag会覆盖之前tag版本的内容
 ```
-docker commit block_challenge_client dockerhub_name/xmartev:new_tag
+docker commit client_name dockerhub_name/xmartev:new_tag
 ```
 
 ![image-20250220181624907](./assets/6.png)
