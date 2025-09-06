@@ -328,9 +328,9 @@ Memory : 64GB
 
 参赛队伍在自己注册的dockerhub上新建一个private repo，名字为xmartev
 
-![create_repo](./assets/1.jpg)
+![create_repo](./assets/1.png)
 
-![alt text](./assets/2.jpg)
+![alt text](./assets/2.png)
 
 ### 2. 将client镜像push到private repo
 
@@ -338,7 +338,7 @@ Memory : 64GB
 ```
 docker tag xmartev/block_challenge_client:v1.0 dockerhub_name/xmartev:tagname 
 ```
-![change_docker_tag](./assets/3.jpg)
+![change_docker_tag](./assets/3.png)
 
 将新tag的client镜像push到private repo
 ```
@@ -385,10 +385,10 @@ docker push dockerhub_name/xmartev:new_tag
 
 在需要提交测试的版本时，将dockerhub用户名、docker token由比赛系统提交。
 
-![enter_account_setting](./assets/8.jpg)
+![enter_account_setting](./assets/8.png)
 
-![create_token_pos](./assets/9.jpg)
+![create_token_pos](./assets/9.png)
 
-![create_token](./assets/10.jpg)
+![create_token](./assets/10.png)
 
-![token_created](./assets/11.jpg)
+![token_created](./assets/11.png)
