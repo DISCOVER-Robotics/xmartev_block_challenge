@@ -1,0 +1,1 @@
+docker exec -it s2r2025_client bash
