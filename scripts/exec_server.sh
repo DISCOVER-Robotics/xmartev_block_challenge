@@ -1,1 +1,1 @@
-docker exec -it s2r2025_server bash
+docker exec -it block_challenge_server bash
