@@ -5,8 +5,8 @@
 ### 1.1 系统整体架构
 
 本系统基于ROS2实现，主要由三部分组成：
-- **基础控制系统**（`task_base.py`）：提供AirbotPlay的基础控制接口
-- **视觉感知系统**（`yolo_detect.py`）：负责目标检测和位置估计
+- **基础控制系统**（`task_base_play.py`）：提供AirbotPlay的基础控制接口
+- **视觉感知系统**（`yolo_detect_obb.py`）：负责目标检测和位置估计
 - **任务执行系统**（`baseline_round1_seed99.py`）：通过状态机实现具体任务流程
 
 系统工作流程如下：
@@ -29,7 +29,7 @@
 
 ## 2. 关键模块原理解析
 
-### 2.1 基础控制模块（task_base.py）
+### 2.1 基础控制模块（task_base_play.py）
 
 `AIRBOTPLAYTaskBase`类提供基础控制功能：
 - 关节状态监控和控制
@@ -49,7 +49,7 @@ base_move(vx, vyaw)
 pcam2base(target)
 ```
 
-### 2.2 视觉感知模块（yolo_detect.py）
+### 2.2 视觉感知模块（yolo_detect_obb.py）
 
 `YOLODetectorNode`负责目标检测与位置估计：
 - 加载YOLO模型进行目标检测
