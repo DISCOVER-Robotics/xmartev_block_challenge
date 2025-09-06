@@ -241,7 +241,7 @@ docker exec -it block_challenge_baseline bash
    echo $ROS_DOMAIN_ID
    ```
 
-## Material Detection Baseline 使用
+## Block Chanllenge Baseline 使用
 
 ### 1. 进入工作目录
 
@@ -424,14 +424,6 @@ python3 s2r_server.py --round_id 1
 docker pull xmartev/block_challenge_client:release_v0
 ```
 
-#### 从docker file本地构建镜像
-
->   ❗️ <YOUR-TEAM-NAME>:<TAG>要替换成参赛队伍名和TAG，例如 `team_A:v1`
-
-```bash
-cd xmartev_block_challenge/docker
-docker build -f Dockerfile.client -t <YOUR-TEAM-NAME>:<TAG> .
-```
 
 ### Run client container
 
@@ -454,7 +446,7 @@ bash exec_client.sh
 ```
 
 
-## 上传client镜像
+## 上传选手开发完的client镜像
 
 选手在client中开发算法，开发完成后打包上传至docker hub，由官方拉取后进行测试，测试使用电脑配置为：
 
