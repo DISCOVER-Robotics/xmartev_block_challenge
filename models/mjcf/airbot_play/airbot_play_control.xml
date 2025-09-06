@@ -1,0 +1,9 @@
+<mujocoinclude>
+  <position name="joint1" ctrllimited="true" ctrlrange="-3.14 2.09"  joint="joint1" kp="1000" user="1" forcelimited="true" forcerange="-300 300"/>
+  <position name="joint2" ctrllimited="true" ctrlrange="-2.96 0.17"  joint="joint2" kp="1000" user="1" forcelimited="true" forcerange="-300 300"/>
+  <position name="joint3" ctrllimited="true" ctrlrange="-0.087 3.14" joint="joint3" kp="1000" user="1" forcelimited="true" forcerange="-300 300"/>
+  <position name="joint4" ctrllimited="true" ctrlrange="-2.96 2.96"  joint="joint4" kp="350" user="1" forcelimited="true" forcerange="-300 300"/>
+  <position name="joint5" ctrllimited="true" ctrlrange="-1.74 1.74"  joint="joint5" kp="350" user="1" forcelimited="true" forcerange="-300 300"/>
+  <position name="joint6" ctrllimited="true" ctrlrange="-3.14 3.14"  joint="joint6" kp="100" user="1" forcelimited="true" forcerange="-300 300"/>
+  <position name='gripper' tendon='gripper_gear' ctrllimited="true" ctrlrange="0. 1." kp="3" user="1" forcelimited="true" forcerange="-1 1"/>
+</mujocoinclude>

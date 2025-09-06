@@ -1,0 +1,5 @@
+<mujocoinclude>
+  <asset>
+    <mesh name="code1" file="object/code1/code1.obj" scale="0.93 0.90273348 0.90253348"/>
+  </asset>
+</mujocoinclude>
