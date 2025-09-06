@@ -176,6 +176,17 @@ elif self.stm.state_idx == 新状态:
 
 # Installation
 
+### 安装git
+
+打开终端输入
+```
+sudo apt update
+sudo apt install git -y
+```
+终端输入下面命令git clone到本地
+```
+git clone https://github.com/DISCOVER-Robotics/xmartev_block_challenge.git
+```
 ### 安装docker
 
 若本地尚未安装docker：
@@ -224,7 +235,7 @@ sudo systemctl restart docker
 docker login
 ```
 # 部署
-### 1. 拉取镜像
+### 1. 拉取client镜像
 
 ```bash
 # 从镜像仓库拉取（
@@ -291,14 +302,6 @@ docker exec -it block_challenge_baseline bash
 ## Block Challenge Baseline 使用
 ### Build server
 
-在本地运行仿真环境。
-
-环境依赖：
-
-+   ubuntu >= 20.04
-+   cuda >= 11.8
-+   显存 >= 6GB
-+   空余硬盘空间 >= 80G
 
 #### 从docker hub拉取镜像
 
