@@ -271,6 +271,11 @@ docker login -u <dockerhub_name>
 ```
 
 给本地已有镜像打 tag, (tag名称，参赛队伍可以自定义)，client_name是本地已有的镜像名，client_tag是它的标签，dockerhub_name为dockerhub的账号名字
+可以先用下面命令查看本地client_name:
+
+```
+docker images | grep client_name
+```
 ```
 docker tag client_name:client_tag dockerhub_name/xmartev:tagname 
 ```
