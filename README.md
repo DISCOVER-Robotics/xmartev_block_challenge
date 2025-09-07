@@ -120,7 +120,7 @@ bash exec_server.sh
 docker start block_challenge_server
 ```
 
-## Client部署
+## Client部署指南
 ### 1. 拉取client镜像
 
 ```bash
