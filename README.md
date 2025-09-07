@@ -263,12 +263,14 @@ Memory : 64GB
 ![alt text](doc/readme_assets/2.png)
 
 ### 2. 将client镜像push到private repo
+先登录：
+
 
 ```
-docker login
+docker login -u <dockerhub_name>
 ```
 
-将client镜像打上tag(tag名称，参赛队伍可以自定义)，client_name是本地已有的镜像名，client_tag是它的标签，dockerhub_name为dockerhub的账号名字
+给本地已有镜像打 tag, (tag名称，参赛队伍可以自定义)，client_name是本地已有的镜像名，client_tag是它的标签，dockerhub_name为dockerhub的账号名字
 ```
 docker tag client_name:client_tag dockerhub_name/xmartev:tagname 
 ```
@@ -296,7 +298,7 @@ docker push dockerhub_name/xmartev:tagname
 
 在 Docker 环境中，您也可以通过 Visual Studio Code（VS Code）安装docker插件 进行高效开发。
 
-### 4. docker commit
+### 4. docker commit（使用 docker commit 保存容器内修改）
 
 本地保存镜像修改内容，使用原有的tag会覆盖之前tag版本的内容
 ```
@@ -305,7 +307,7 @@ docker commit container_name dockerhub_name/xmartev:new_tag
 
 ![image-20250220181624907](doc/readme_assets/6.png)
 
-### 5. docker push
+### 5. docker push（推送新镜像）
 
 通过docker push到private repo保存当前docker镜像到dockerhub
 ```
@@ -314,7 +316,7 @@ docker push dockerhub_name/xmartev:new_tag
 
 ![image-20250220181914426](doc/readme_assets/7.png)
 
-### 6. 生成访问token
+### 6. 生成访问 Token（用于评测拉取）
 
 参考连接：[docker token](https://docs.docker.com/docker-hub/access-tokens/)
 
