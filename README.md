@@ -46,21 +46,32 @@ docker --version
 打开终端，输入nvidia-smi检查驱动是否安装成功。
 出现显卡信息和驱动版本信息即为安装成功。
 ![image-2025022019304150341](doc/readme_assets/nvidiasmi.png)
-安装 nvidia-docker2
+
+### 4.安装 nvidia-docker2
 
 ```bash
-sudo systemctl --now enable docker
+# 1) 启用 Docker
+sudo systemctl enable --now docker
 
-distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
-   && curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - \
-   && curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
-   
+# 2) 添加 NVIDIA Container Toolkit 源（使用 keyring，避免 apt-key）
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey \
+ | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
+
+curl -fsSL https://nvidia.github.io/libnvidia-container/stable/$distribution/libnvidia-container.list \
+ | sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' \
+ | sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+
 sudo apt-get update
-sudo apt-get install -y nvidia-docker2
+sudo apt-get install -y nvidia-container-toolkit
+
+# 3) 让 Docker 使用 NVIDIA 运行时（可设为默认）
+sudo nvidia-ctk runtime configure --runtime=docker --set-as-default
 sudo systemctl restart docker
+
 ```
 
-### 4. 注册 dockerhub
+### 5. 注册 dockerhub
 
 注册dockerhub账号：[dockerhub](https://hub.docker.com/) Docker Hub 是一个类似于 GitHub 的平台，只不过它不是存放代码，而是存放 Docker 镜像。选手在client中开发算法，开发完成后打包上传至docker hub，由官方拉取后进行测试。
 
@@ -70,7 +81,7 @@ sudo systemctl restart docker
 docker login
 ```
 
-### 5. 从docker hub拉取镜像
+### 6. 从docker hub拉取镜像
 
 ```bash
 # 从docker hub拉取
@@ -83,7 +94,7 @@ docker pull crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/b
 docker images | grep block_challenge_server
 ```
 
-### 6. Run server container
+### 7. Run server container
 
 打开[`scripts/create_container_server.sh`](scripts/create_container_server.sh)并修改镜像 和 tag名称（tag名称以最新的版本为准），如果使用国内镜像源拉取，则需要将第15行的`xmartev/`修改成`crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/`
 
