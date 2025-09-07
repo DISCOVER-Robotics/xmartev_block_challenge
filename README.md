@@ -138,7 +138,7 @@ docker images | grep block_challenge_client
 
 打开[`scripts/create_container_client.sh`](scripts/create_container_client.sh)并修改镜像 和 tag名称，tag`example_tag`需要修改为实际的最新tag，如果是从国内镜像源拉取，第15行的`xmartev/`需要修改为国内镜像源名称，例如`crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/`
 
-![image-20250907022216927](doc/readme_assets/image-20250907022216927.png)
+![image-20250907022216927](doc/readme_assets/20250907-074208.jpg)
 
 然后执行
 
