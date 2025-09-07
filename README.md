@@ -96,7 +96,7 @@ docker images | grep block_challenge_server
 
 ### 7. Run server container
 
-打开[`scripts/create_container_server.sh`](scripts/create_container_server.sh)并修改镜像 和 tag名称（tag名称以最新的版本为准），如果使用国内镜像源拉取，则需要将第15行的`xmartev/`修改成`crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/`
+打开[`scripts/create_container_server.sh`](scripts/create_container_server.sh)并修改镜像 和 tag名称（tag名称以最新的版本为准,如按照上面的版本名tag改为release_v0），如果使用国内镜像源拉取，则需要将第15行的`xmartev/`修改成`crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/`
 
 ![alt text](doc/readme_assets/create_container_server.png)
 
@@ -136,7 +136,7 @@ docker images | grep block_challenge_client
 
 ### 2. 创建Docker容器
 
-打开[`scripts/create_container_client.sh`](scripts/create_container_client.sh)并修改镜像 和 tag名称，tag`example_tag`需要修改为实际的最新tag，如果是从国内镜像源拉取，第15行的`xmartev/`需要修改为国内镜像源名称，例如`crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/`
+打开[`scripts/create_container_client.sh`](scripts/create_container_client.sh)并修改镜像 和 tag名称，tag`example_tag`需要修改为实际的最新tag,名称以最新的版本为准,如按照上面的版本名tag改为release_v0，如果是从国内镜像源拉取，第15行的`xmartev/`需要修改为国内镜像源名称，例如`crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/`
 
 ![image-20250907022216927](doc/readme_assets/20250907-074208.jpg)
 
