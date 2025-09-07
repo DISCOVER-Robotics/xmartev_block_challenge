@@ -286,7 +286,7 @@ docker push dockerhub_name/xmartev:tagname
 
 ### 3. 开发比赛任务
 
-根据private repo和tag名字，修改create_container_client.sh里的镜像名和tag
+根据private repo和tag名字，修改create_container_client.sh里的镜像名和tag,这里第三航的block_challenge_client是container_name
 
 ![image-20250220181043385](doc/readme_assets/bash.png)
 
@@ -300,7 +300,8 @@ docker push dockerhub_name/xmartev:tagname
 
 ### 4. docker commit（使用 docker commit 保存容器内修改）
 
-本地保存镜像修改内容，使用原有的tag会覆盖之前tag版本的内容
+
+本地保存镜像修改内容，使用原有的tag会覆盖之前tag版本的内容，如这里我们的container_name为block_challenge_client, dockerhub_name为自己docker hub的名字。
 ```
 docker commit container_name dockerhub_name/xmartev:new_tag
 ```
