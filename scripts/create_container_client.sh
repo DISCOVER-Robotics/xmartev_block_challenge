@@ -1,6 +1,6 @@
 docker rm -f block_challenge_client
 
-docker run -id --name block_challenge_client_client --gpus all \
+docker run -id --name block_challenge_client --gpus all \
     --privileged=true \
     --network=host \
     --ipc=host \
@@ -12,4 +12,4 @@ docker run -id --name block_challenge_client_client --gpus all \
     -e QT_X11_NO_MITSHM=1 \
     -e NVIDIA_DRIVER_CAPABILITIES=all \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
-    xmartev/block_challenge_client_client:example_tag bash
+    xmartev/block_challenge_client:example_tag bash
