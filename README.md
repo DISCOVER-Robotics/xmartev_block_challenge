@@ -302,7 +302,7 @@ docker ps
 docker commit container_id dockerhub_name/xmartev:new_tag
 ```
 
-![image-20250220181624907](doc/readme_assets/6.png)
+![image-20250220181624907](doc/readme_assets/zz.png)
 
 ### 5. docker push（推送新镜像）
 
