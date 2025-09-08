@@ -7,7 +7,10 @@ cuda >= 11.8
 显存 >= 6GB
 空余硬盘空间 >= 80G
 ```
-
+查看cuda版本
+```
+nvcc --version
+```
 ## server部署指南
 
 ### 1. 安装git
