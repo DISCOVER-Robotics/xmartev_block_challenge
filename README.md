@@ -278,7 +278,7 @@ docker push dockerhub_name/xmartev:tagname
 
 ### 3. 开发比赛任务
 
-根据private repo和tag名字，修改create_container_client.sh里的镜像名和tag,这里第三航的block_challenge_client是container_name
+根据private repo和tag名字，修改create_container_client.sh里的镜像名和tag,这里第三航的block_challenge_client是container_id
 
 ![image-20250220181043385](doc/readme_assets/bash.png)
 
@@ -294,7 +294,7 @@ docker push dockerhub_name/xmartev:tagname
 
 
 本地保存镜像修改内容，使用原有的tag会覆盖之前tag版本的内容，如这里我们的container_id为block_challenge_client, dockerhub_name为自己docker hub的名字。
-可以终端输入docker ps来查看container id
+可以终端输入docker ps来查看container_id,如果还有疑问可以查看[docker commit官方说明](https://docs.docker.com/reference/cli/docker/container/commit/)
 ```
 docker ps
 ```
