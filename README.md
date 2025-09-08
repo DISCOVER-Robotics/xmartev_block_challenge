@@ -299,7 +299,7 @@ docker push dockerhub_name/xmartev:tagname
 docker ps
 ```
 ```
-docker commit container_name dockerhub_name/xmartev:new_tag
+docker commit container_id dockerhub_name/xmartev:new_tag
 ```
 
 ![image-20250220181624907](doc/readme_assets/6.png)
