@@ -311,7 +311,7 @@ docker commit container_id dockerhub_name/xmartev:new_tag
 docker push dockerhub_name/xmartev:new_tag
 ```
 
-![image-20250220181914426](doc/readme_assets/7.png)
+![image-20250220181914426](doc/readme_assets/aa.png)
 
 ### 6. 生成访问 Token（用于评测拉取）
 
