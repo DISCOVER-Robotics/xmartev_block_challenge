@@ -293,7 +293,11 @@ docker push dockerhub_name/xmartev:tagname
 ### 4. docker commit（使用 docker commit 保存容器内修改）
 
 
-本地保存镜像修改内容，使用原有的tag会覆盖之前tag版本的内容，如这里我们的container_name为block_challenge_client, dockerhub_name为自己docker hub的名字。
+本地保存镜像修改内容，使用原有的tag会覆盖之前tag版本的内容，如这里我们的container_id为block_challenge_client, dockerhub_name为自己docker hub的名字。
+可以终端输入docker ps来查看container id
+```
+docker ps
+```
 ```
 docker commit container_name dockerhub_name/xmartev:new_tag
 ```
