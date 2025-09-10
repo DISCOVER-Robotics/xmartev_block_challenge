@@ -30,7 +30,7 @@ cd xmartev_block_challenge
 若本地尚未安装docker：
 
 ```bash
-cd xmartev_block_challenge/scripts
+cd ../scripts
 bash docker_install.sh
 ```
 
@@ -104,10 +104,9 @@ cd xmartev_block_challenge/scripts
 bash create_container_server.sh
 ```
 
-终端中进入server container：
+终端中进入server container,同目录（xmartev_block_challenge/scripts）下运行
 
 ```bash
-cd xmartev_block_challenge/scripts
 bash exec_server.sh
 ```
 
@@ -145,9 +144,8 @@ bash create_container_client.sh
 ```
 
 ### 3. 进入Docker容器
-
-```bash
-cd xmartev_block_challenge/scripts
+同目录下(xmartev_block_challenge/scripts)运行
+```
 bash exec_client.sh
 ```
 
