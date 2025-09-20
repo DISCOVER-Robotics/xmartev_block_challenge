@@ -153,7 +153,7 @@ bash exec_client.sh
 
 1. 在第一个终端，进入容器并运行发布节点：
    ```bash
-   docker exec -it block_challenge_baseline bash
+   docker exec -it block_challenge_server bash
    ros2 run demo_nodes_cpp talker
    ```
    成功运行会看到类似以下输出：
