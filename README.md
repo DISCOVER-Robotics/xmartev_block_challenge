@@ -182,7 +182,7 @@ bash exec_client.sh
 
 ```bash
 docker exec -it block_challenge_client bash
-cd /workspace/block_challenge_client
+cd /workspace/block_challenge_baseline
 ```
 
 ### 2. 运行baseline
