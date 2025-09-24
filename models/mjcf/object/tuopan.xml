@@ -1,6 +1,6 @@
 <mujocoinclude>
   <inertial pos="0 0 0" mass="0.1" diaginertia="2e-05 2e-05 2e-05" />
-  <!-- <geom type="box" pos="0 0 0.002" rgba="1 0 0 1" size="0.15 0.2 0.002" class="obj_collision"/> -->
+  <geom type="box" pos="0 0 -0.003" rgba="1 0 0 1" size="0.15 0.2 0.007" class="obj_collision"/>
   <geom rgba="0.5 0.5 0.5 1" mesh="tuopan" class="obj_visual" />
   <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="tuopan_part_0" class="obj_collision"/>
   <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="tuopan_part_2" class="obj_collision"/>

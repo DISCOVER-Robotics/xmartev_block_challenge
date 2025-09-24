@@ -33,7 +33,7 @@
       <geom group="2" type="mesh" contype="0" conaffinity="0"/>
     </default>
     <default class="obj_collision">
-      <geom group="3" condim="3" solimp="0.99 0.995 0.01" solref="0.005 1" friction="1 0.005 0.0001" type="mesh"/>
+      <geom group="3" condim="3" solimp="0.999 0.995 0.01" solref="0.005 1" friction="1 0.005 0.0001" type="mesh"/>
     </default>
   </default>
 
@@ -62,7 +62,7 @@
     <!-- 左1 -->
     <body name="code1_1" pos="-0.20 0.98 0.754" euler="0 0 0">
       <joint type="free"/>
-      <inertial pos="0 0 0.018" mass="0.001" diaginertia="1e-07 1e-07 1e-07"/>
+      <inertial pos="0 0 0.018" mass="0.0002" diaginertia="1e-08 1e-08 1e-08"/>
       <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code1" class="obj_visual"/>
       <geom type="box" rgba="0 1 0 0.8" size="0.03 0.015 0.015" pos="0 0 0.015" class="obj_collision"/>
     </body>
@@ -70,7 +70,7 @@
     <!-- 左2 -->
     <body name="code1_2" pos="-0.28 0.95 0.754" euler="0 0 0.5">
       <joint type="free"/>
-      <inertial pos="0 0 0.018" mass="0.001" diaginertia="1e-07 1e-07 1e-07"/>
+      <inertial pos="0 0 0.018" mass="0.0002" diaginertia="1e-08 1e-08 1e-08"/>
       <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code1" class="obj_visual"/>
       <geom type="box" rgba="0 1 0 0.8" size="0.03 0.015 0.015" pos="0 0 0.015" class="obj_collision"/>
     </body>
@@ -78,7 +78,7 @@
     <!-- 左3_baseline -->
     <body name="code1_3" pos="-0.18 0.780 0.754" euler="0 0 0">
       <joint type="free"/>
-      <inertial pos="0 0 0.018" mass="0.001" diaginertia="1e-07 1e-07 1e-07"/>
+      <inertial pos="0 0 0.018" mass="0.0002" diaginertia="1e-08 1e-08 1e-08"/>
       <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code1" class="obj_visual"/>
       <geom type="box" rgba="0 1 0 0.8" size="0.03 0.015 0.015" pos="0 0 0.015" class="obj_collision"/>
     </body>
@@ -86,7 +86,7 @@
     <!-- 左4 -->
     <body name="code1_4" pos="-0.23 0.9 0.754" euler="0 0 -0.9">
       <joint type="free"/>
-      <inertial pos="0 0 0.018" mass="0.001" diaginertia="1e-07 1e-07 1e-07"/>
+      <inertial pos="0 0 0.018" mass="0.0002" diaginertia="1e-08 1e-08 1e-08"/>
       <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code1" class="obj_visual"/>
       <geom type="box" rgba="0 1 0 0.8" size="0.03 0.015 0.015" pos="0 0 0.015" class="obj_collision"/>
     </body>
@@ -94,7 +94,7 @@
     <!-- 梯形1  -->
     <body name="code2_1" pos="-0.14 0.90 0.754" euler="0 0 0">
       <joint type="free"/>
-      <inertial pos="0 0 0.012" mass="0.001" diaginertia="1e-07 1e-07 1e-07"/>
+      <inertial pos="0 0 0.012" mass="0.0002" diaginertia="1e-08 1e-08 1e-08"/>
       <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code2" class="obj_visual"/>
       <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code2" class="obj_collision"/>
     </body>
@@ -102,7 +102,7 @@
     <!-- 梯形2  -->
     <body name="code2_2" pos="-0.28 0.75 0.754" euler="0 0 0">
       <joint type="free"/>
-      <inertial pos="0 0 0.012" mass="0.001" diaginertia="1e-07 1e-07 1e-07"/>
+      <inertial pos="0 0 0.012" mass="0.0002" diaginertia="1e-08 1e-08 1e-08"/>
       <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code2" class="obj_visual"/>
       <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code2" class="obj_collision"/>
     </body>
@@ -110,7 +110,7 @@
     <!-- 梯形3  -->
     <body name="code2_3" pos="-0.30 0.82 0.754" euler="0 0 2.00">
       <joint type="free"/>
-      <inertial pos="0 0 0.012" mass="0.001" diaginertia="1e-07 1e-07 1e-07"/>
+      <inertial pos="0 0 0.012" mass="0.0002" diaginertia="1e-08 1e-08 1e-08"/>
       <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code2" class="obj_visual"/>
       <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code2" class="obj_collision"/>
     </body>
@@ -118,7 +118,7 @@
     <!-- 编号3_1 -->
     <body name="code3_1" pos="-0.12 0.7 0.754" euler="0 0 0">
       <joint type="free"/>
-      <inertial pos="0 0 0.0295" mass="0.001" diaginertia="1e-07 1e-07 1e-07"/>
+      <inertial pos="0 0 0.0295" mass="0.0002" diaginertia="1e-08 1e-08 1e-08"/>
       <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code3" class="obj_visual"/>
       <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code3" class="obj_collision"/>
     </body>
@@ -127,17 +127,18 @@
     <!-- 编号3_2 -->
     <body name="code3_2" pos="-0.28 0.68 0.754" euler="0 0 0">
       <joint type="free"/>
-      <inertial pos="0 0 0.0295" mass="0.001" diaginertia="1e-07 1e-07 1e-07"/>
+      <inertial pos="0 0 0.0295" mass="0.0002" diaginertia="1e-08 1e-08 1e-08"/>
       <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code3" class="obj_visual"/>
       <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code3" class="obj_collision"/>
     </body>
 
     <!-- 编号4 -->
-    <body name="code4" pos="-0.2 0.68 0.77" euler="0 0 0">
+    <body name="code4" pos="-0.2 0.68 0.754" euler="0 0 0">
       <joint type="free"/>
-      <inertial pos="0 0 0.01" mass="0.001" diaginertia="1e-07 1e-07 1e-07"/>
+      <inertial pos="0 0 0.01" mass="0.0002" diaginertia="1e-08 1e-08 1e-08"/>
       <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code4" class="obj_visual"/>
       <geom type="mesh" rgba="0.5 0.5 0.5 1" mesh="code4" class="obj_collision"/>
+      <geom type="box" rgba="0 1 0 1" pos="0 0 0.001" size="0.025 0.015 0.002" class="obj_collision"/>
     </body>
 
     <body name="background" pos="-0.18 0.75 0.0" euler="0 0 0">
@@ -148,6 +149,15 @@
       <geom size="0.02 0.02 0.37" pos="-0.35 -0.75 0.37" type="box" rgba="0.15 0.15 0.15 1"/>
     </body>
   </worldbody>
+
+  <keyframe>
+<key
+  time="47.482"
+  qpos="1.73986e-17 -1.35298 0.990057 -1.50978 1.27026 1.50725 0.0399361 -0.0400413 -0.2 0.98 0.754 1 1.11498e-17 -4.2506e-19 -5.05997e-15 -0.28 0.95 0.754 0.968912 2.53573e-17 6.25763e-18 0.247404 -0.18 0.78 0.754 1 6.75335e-18 -7.66748e-19 1.78148e-15 -0.23 0.9 0.754 0.900447 9.22681e-18 -4.75128e-18 -0.434966 -0.14 0.900001 0.753963 0.999996 0.0029141 8.7625e-05 -9.46174e-06 -0.309472 0.772296 0.755072 0.966475 -0.0835977 0.0209653 -0.241864 -0.300183 0.819999 0.753964 0.525136 0.00150515 0.00239551 0.851014 -0.119991 0.699998 0.754311 0.999848 0.00657897 0.0161248 -5.48477e-05 -0.279991 0.679998 0.754311 0.999848 0.00657911 0.0161274 -5.48215e-05 -0.195924 0.677309 0.75391 0.997232 -0.00276616 -0.000997419 -0.0742969"
+  qvel="1.7101e-15 5.36758e-14 -2.35885e-14 -4.39246e-14 -5.38885e-14 -3.58361e-14 7.80904e-16 2.02187e-16 -2.88925e-18 5.31532e-18 -2.38247e-14 -8.13e-16 1.60514e-16 1.83331e-27 -1.15829e-18 2.5664e-18 1.45127e-14 1.36788e-16 5.35064e-17 1.18585e-16 -4.79858e-19 -5.2934e-18 -1.26774e-14 -1.06507e-15 1.23032e-16 -3.38813e-17 4.24596e-18 -3.0125e-18 -2.38178e-14 -8.5268e-16 -2.1368e-16 -1.69407e-17 4.46935e-09 -5.05766e-09 3.99643e-06 -0.000637945 -1.82442e-06 -1.41736e-07 6.71432e-05 3.03597e-05 0.000987908 -0.205167 -0.0955343 -0.00073116 1.90584e-09 -1.91982e-10 3.99795e-06 -0.000638188 -2.50954e-06 5.54807e-08 -5.25984e-08 1.28591e-07 2.72862e-06 -0.000341923 -0.000106967 -9.20538e-06 -5.24697e-08 1.28578e-07 2.72876e-06 -0.000341897 -0.000106898 -9.20789e-06 -5.33418e-08 -1.96964e-07 -8.65492e-06 -0.00200176 0.000215534 5.71932e-06"
+  ctrl="0 -1.34805 0.994045 -1.5096 1.2702 1.5072 1"
+/>
+  </keyframe>
 
   <actuator>
     <include file="airbot_play/airbot_play_control.xml"/>
