@@ -86,9 +86,18 @@ docker pull crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/b
 docker images | grep block_challenge_server
 ```
 
+**注意：如果您使用的是50系显卡（如RTX 5090等），请使用专门优化的镜像：**
+```bash
+# 50系显卡专用镜像
+docker pull xmartev/block_challenge_server:release_cuda128_v0
+
+# 国内镜像仓库
+docker pull crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/block_challenge_server:release_cuda128_v0
+```
+
 ### 6. Run server container
 
-打开[`scripts/create_container_server.sh`](scripts/create_container_server.sh)并修改镜像 和 tag名称（tag名称以最新的版本为准,如按照上面的版本名tag改为release_v0），如果使用国内镜像源拉取，则需要将第15行的`xmartev/`修改成`crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/`
+打开[`scripts/create_container_server.sh`](scripts/create_container_server.sh)并修改镜像 和 tag名称（tag名称以最新的版本为准,如按照上面的版本名tag改为release_v0，50系显卡用户请使用release_cuda128_v0），如果使用国内镜像源拉取，则需要将第15行的`xmartev/`修改成`crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/`
 
 ![alt text](doc/readme_assets/create_container_server.png)
 
