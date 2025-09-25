@@ -68,17 +68,12 @@ sudo apt-get install -y \
 
 ```
 
-### 5. 注册 dockerhub
+### 5. 从docker hub拉取镜像
 
-注册dockerhub账号：[dockerhub](https://hub.docker.com/) Docker Hub 是一个类似于 GitHub 的平台，只不过它不是存放代码，而是存放 Docker 镜像。选手在client中开发算法，开发完成后打包上传至docker hub，由官方拉取后进行测试。
+docker hub是一个类似于github的平台，只不过不用来存放代码，而是存放镜像
 
-登录dockerhub账号
+在国内拉取镜像可能会遇到网络问题，所以我们提供了国内镜像仓库（阿里云ACR服务）
 
-```bash
-docker login
-```
-
-### 6. 从docker hub拉取镜像
 
 ```bash
 # 从docker hub拉取
@@ -91,7 +86,7 @@ docker pull crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/b
 docker images | grep block_challenge_server
 ```
 
-### 7. Run server container
+### 6. Run server container
 
 打开[`scripts/create_container_server.sh`](scripts/create_container_server.sh)并修改镜像 和 tag名称（tag名称以最新的版本为准,如按照上面的版本名tag改为release_v0），如果使用国内镜像源拉取，则需要将第15行的`xmartev/`修改成`crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/`
 
@@ -241,7 +236,7 @@ Published topics:
 
 ## 完成开发后上传client镜像
 
-选手在client中开发算法，开发完成后打包上传至docker hub，由官方拉取后进行测试，测试使用电脑配置为：
+选手在client中开发算法，开发完成后打包上传至阿里云ACR服务，由官方拉取后进行测试，测试使用电脑配置为：
 
 ```
 cpu : 13th Gen Intel Core i7 13700KF x24
@@ -249,44 +244,56 @@ gpu : GeForce RTX 4090 24G
 Memory : 64GB
 ```
 
-### 1. 新建private repo
+### 1. 创建阿里云ACR仓库
 
-参赛队伍在自己注册的dockerhub上新建一个private repo，名字为xmartev
+参赛队伍在[阿里云容器镜像服务](https://cr.console.aliyun.com/)中创建私有仓库（个人版即可），名字为xmartev
+
+>   非常重要：仓库名必须设置为xmartev，不可自定义，否则评委无法拉取选手镜像
+>
 
 ![create_repo](doc/readme_assets/1.png)
 
 ![alt text](doc/readme_assets/2.png)
 
-### 2. 将client镜像push到private repo
-先登录：
+代码源设置为本地仓库
 
+![code_base](doc/readme_assets/13.png)
+
+### 2. 将client镜像push到阿里云ACR仓库
+#### 先登录阿里云ACR服务：
+可在阿里云容器镜像服务/实例列表/镜像仓库/基本信息中查看登录命令
+
+输入命令后，会提示输入阿里云ACR密码，密码是您在开通ACR服务时设置的密码，不是阿里云账号密码
+
+![view_command](doc/readme_assets/12.png)
+
+#### 查看本地镜像id：
 
 ```
-docker login -u <dockerhub_name>
+docker images
+```
+如图，红框中即为镜像id：
+
+![docker_images](doc/readme_assets/15.png)
+
+#### 将镜像推送到Registry：
+```
+docker tag <ImageId> <阿里云ACR地址>:<tag_name>
+docker push <阿里云ACR地址>:<tag_name>
 ```
 
-给本地已有镜像打 tag, (tag名称，参赛队伍可以自定义)，client_name是本地已有的镜像名，client_tag是它的标签，dockerhub_name为dockerhub的账号名字
-可以先用下面命令查看本地client_name是否存在:
+注意：
+1. ImageId参考`docker images`输出
+2. 阿里云ACR地址可参考下图方式获取
+2. <tag_name>命名规则：
+- 如参赛团队名为中文，tag_name为小写拼音+电话号码格式。例如：参赛团队名为“映体科技”，则tag_name：yingtikeji13419923657
+- 如团队名包含英文，tag_name为团队英文名+电话号码格式，例如：参赛团队名为”Enbody Lab”，则tag_name：Enbody_Lab13419923657 （注意：tag_name中不能有空格，可用“_”代替空格）
 
-```
-docker images | grep client_name
-```
-```
-docker tag client_name:client_tag dockerhub_name/xmartev:tagname 
-```
-在以下示例中，dockerhub_name为`zeyu1999`
 ![change_docker_tag](doc/readme_assets/3.png)
-
-将新tag的client镜像push到private repo
-```
-docker push dockerhub_name/xmartev:tagname 
-```
-
-![docker_push](doc/readme_assets/4.png)
 
 ### 3. 开发比赛任务
 
-根据private repo和tag名字，修改create_container_client.sh里的镜像名和tag,这里第三航的block_challenge_client是container_id
+根据private repo和tag名字，修改create_container_client.sh里的镜像名和tag,这里第三行的block_challenge_client是container_id
 
 ![image-20250220181043385](doc/readme_assets/bash.png)
 
@@ -300,38 +307,50 @@ docker push dockerhub_name/xmartev:tagname
 
 ### 4. docker commit（使用 docker commit 保存容器内修改）
 
-
-本地保存镜像修改内容，使用原有的tag会覆盖之前tag版本的内容，如这里我们的container_id为block_challenge_client, dockerhub_name为自己docker hub的名字。
+本地保存镜像修改内容，使用原有的tag会覆盖之前tag版本的内容，如这里我们的container_id为block_challenge_client,。
 可以终端输入docker ps来查看container_id,如果还有疑问可以查看[docker commit官方说明](https://docs.docker.com/reference/cli/docker/container/commit/)
 ```
 docker ps
 ```
 ```
-docker commit container_id dockerhub_name/xmartev:new_tag
+docker commit container_id <阿里云ACR地址>:<new_tag_name>
 ```
 
-![image-20250220181624907](doc/readme_assets/zz.png)
+注意：<new_tag_name>可在原有tag_name之后，拼接上版本号，例如：原有tag_name为“yingtikeji13419923657”，则new_tag_name为“yingtikeji13419923657_release_1”
+
 
 ### 5. docker push（推送新镜像）
 
-通过docker push到private repo保存当前docker镜像到dockerhub
+通过docker push到阿里云ACR仓库保存当前docker镜像
 ```
-docker push dockerhub_name/xmartev:new_tag
+docker push <阿里云ACR地址>:<new_tag_name>
 ```
 
-![image-20250220181914426](doc/readme_assets/aa.png)
+### 6. 设置固定密码（用于评测拉取）
 
-### 6. 生成访问 Token（用于评测拉取）
-
-参考连接：[docker token](https://docs.docker.com/docker-hub/access-tokens/)
-
->   非常重要：在需要提交测试的版本时，选手需要将自己的dockerhub用户名、docker token 和 镜像的tag由比赛系统提交。以下为生成docker token的指南。
+>   非常重要：您稍后会在比赛系统中提交固定密码，评委会用此密码拉取您的镜像。您在开通ACR服务时已经设置过固定密码了，如遗忘，请按照下面操作修改。
 >
+进入ACR服务控制台
 
 ![enter_account_setting](doc/readme_assets/8.png)
 
+修改固定密码
+
 ![create_token_pos](doc/readme_assets/9.png)
 
-![create_token](doc/readme_assets/10.png)
+### 7.在收集表中提交信息
 
-![token_created](doc/readme_assets/11.png)
+选手需要在收集表中提交以下信息，以方便裁判拉取镜像评分：
+
+收集表地址：https://w79rvfxw83.feishu.cn/share/base/form/shrcnGl69hAadXWlNm9ZNSZ4uOe
+
+1. aliyun_username ：如下图方式获取
+2. 固定密码 : 您在上一步中设置的密码
+3. 阿里云ACR地址 ：如下图方式获取
+4. new_tag_name ：最新版本的tag名称
+5. [极市开发者平台](https://cvmart.net/)队长用户ID和用户名 ： 队长登录进入平台，在右上角点击头像可查看自己的ID和用户名
+
+![get_session](doc/readme_assets/14.png)
+
+
+
