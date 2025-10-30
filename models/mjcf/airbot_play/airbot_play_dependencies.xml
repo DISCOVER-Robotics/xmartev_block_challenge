@@ -41,11 +41,11 @@
       </default>
 
       <default class='finger1'>
-        <joint axis='0 1 0' range="-0.04 0" type='slide' damping="0.2" frictionloss="1"/>
+        <joint axis='0 1 0' range="-0.04 0" type='slide' damping="0.5" frictionloss="1"/>
       </default>
 
       <default class='finger2'>
-        <joint axis='0 1 0' range="0 0.04" type='slide' damping="0.2" frictionloss="1"/>
+        <joint axis='0 1 0' range="0 0.04" type='slide' damping="0.5" frictionloss="1"/>
       </default>
     </default>
 
