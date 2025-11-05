@@ -248,7 +248,9 @@ Published topics:
 
 ## 完成开发后上传client镜像
 
-选手在client中开发算法，开发完成后打包上传至阿里云ACR服务，由官方拉取后进行测试，测试使用电脑配置为：
+选手在client中开发算法，将可执行脚本命名为`client_block.py`. 裁判会执行该脚本来评分。
+
+开发完成后打包上传至阿里云ACR服务，由官方拉取后进行测试，测试使用电脑配置为：
 
 ```
 cpu : 13th Gen Intel Core i7 13700KF x24
