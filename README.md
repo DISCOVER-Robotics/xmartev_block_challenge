@@ -324,6 +324,9 @@ docker push <阿里云ACR地址>:<tag_name>
 
 在 Docker 环境中，您也可以通过 Visual Studio Code（VS Code）安装docker插件 进行高效开发。
 
+！！！开发完成后，注意，将脚本名称改为client_block.py
+
+
 ### 4. docker commit（使用 docker commit 保存容器内修改）
 
 本地保存镜像修改内容，使用原有的tag会覆盖之前tag版本的内容，如这里我们的container_id为block_challenge_client,。
