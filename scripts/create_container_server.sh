@@ -12,6 +12,6 @@ docker run -id --name block_challenge_server --gpus all \
     -e NVIDIA_DRIVER_CAPABILITIES=all \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -v /dev/input:/dev/input \
-    xmartev/block_challenge_server:release_v0 bash
+    crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/block_challenge_server:release_v0.0.1 bash
 
 xhost +
