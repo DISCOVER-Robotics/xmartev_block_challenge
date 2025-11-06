@@ -76,7 +76,7 @@ docker hub是一个类似于github的平台，只不过不用来存放代码，�
 
 tag需要更改为最新版
 
-!!!server端最新tag名称：release_v0.0.1或release_cuda128_v0.0.1 
+!!!server端最新tag名称：`release_v0.0.1`或`release_cuda128_v0.0.1`
 
 ```bash
 # 从docker hub拉取
@@ -97,7 +97,7 @@ docker pull crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/b
 
 ### 6. Run server container
 
-!!!server端最新tag名称：release_v0.0.1或release_cuda128_v0.0.1 
+!!!server端最新tag名称：`release_v0.0.1`或`release_cuda128_v0.0.1`
 
 打开[`scripts/create_container_server.sh`](scripts/create_container_server.sh)并修改镜像 和 tag名称（tag名称以最新的版本为准,如按照上面的版本名tag改为release_v0，50系显卡用户请使用release_cuda128_v0），如果使用国内镜像源拉取，则需要将第15行的`xmartev/`修改成`crpi-1pzq998p9m7w0auy.cn-hangzhou.personal.cr.aliyuncs.com/xmartev/`
 
@@ -323,9 +323,6 @@ docker push <阿里云ACR地址>:<tag_name>
 强烈推荐使用 Git 工具进行代码版本管理，以确保代码的安全性和可追溯性。
 
 在 Docker 环境中，您也可以通过 Visual Studio Code（VS Code）安装docker插件 进行高效开发。
-
-！！！开发完成后，注意，将脚本名称改为client_block.py
-
 
 ### 4. docker commit（使用 docker commit 保存容器内修改）
 
